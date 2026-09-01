@@ -314,7 +314,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ---------------------------------------------------------
    research cards
    --------------------------------------------------------- */
-.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+/* 6-column track so featured cards can span the full width and the
+   remaining text cards sit three across in one tidy row. */
+.cards { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+.card { grid-column: span 2; }
 
 .card {
   background: var(--paper); border: 1px solid var(--line);
@@ -422,8 +425,13 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ---------------------------------------------------------
    responsive
    --------------------------------------------------------- */
+@media (max-width: 1000px) {
+  .card { grid-column: span 3; }   /* two across */
+}
+
 @media (max-width: 860px) {
   .cards { grid-template-columns: 1fr; }
+  .card, .card.wide { grid-column: 1 / -1; }
   .plate { padding: 12px 12px 10px; }
   .row { grid-template-columns: 1fr; gap: 8px; }
   .service li { grid-template-columns: 1fr; gap: 3px; }

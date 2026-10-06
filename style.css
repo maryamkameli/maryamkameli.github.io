@@ -472,3 +472,36 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .section, .section.alt { background: #fff; padding: 18px 0; }
   .news-item[hidden] { display: grid !important; }
 }
+
+/* ---------------------------------------------------------
+   citations: BibTeX toggle and IEEE notice
+   --------------------------------------------------------- */
+/* The toggle shares the chip look of the PDF link so the row reads as one set. */
+.pub-links .bib-btn {
+  font: inherit; font-size: .8rem; font-weight: 500; color: var(--ink-2);
+  background: none; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 11px;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.pub-links .bib-btn:hover,
+.pub-links .bib-btn[aria-expanded="true"] {
+  color: var(--accent); border-color: var(--accent); background: var(--accent-soft);
+}
+.bib {
+  position: relative; margin: 12px 0 0;
+  background: var(--paper-alt); border: 1px solid var(--line); border-radius: 8px;
+}
+.bib[hidden] { display: none; }
+.bib pre {
+  margin: 0; padding: 14px 16px; overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .78rem; line-height: 1.55; color: var(--ink-2);
+}
+.bib-copy {
+  position: absolute; top: 8px; right: 8px;
+  font: inherit; font-size: .74rem; font-weight: 500; color: var(--ink-2);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  padding: 3px 9px; cursor: pointer;
+}
+.bib-copy:hover { color: var(--accent); border-color: var(--accent); }
+.pub-note { margin: 28px 0 0; font-size: .74rem; line-height: 1.5; color: var(--muted); }

@@ -98,4 +98,29 @@
 
     sections.forEach(function (s) { io.observe(s.el); });
   }
+  /* -------------------------------------------------------
+     5. publications: BibTeX reveal and copy
+     ------------------------------------------------------- */
+  document.querySelectorAll(".bib-btn").forEach(function (btn) {
+    var box = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!box) return;
+    btn.addEventListener("click", function () {
+      var open = box.hidden;
+      box.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  });
+
+  document.querySelectorAll(".bib-copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.parentNode.querySelector("pre").textContent;
+      var done = function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      }
+    });
+  });
 })();

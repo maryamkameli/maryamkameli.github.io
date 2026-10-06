@@ -123,6 +123,11 @@
     <ul class="news" id="newsList">
 
       <li class="news-item">
+        <div class="news-date">Oct 2026</div>
+        <div class="news-body">Presenting two papers at <strong>IEEE ISMAR 2026</strong>: our TVCG paper <a href="#publications"><em>NPR Locomotion</em></a>, and <a href="#publications"><em>Does Avatar Photorealism Enhance Social Presence?</em></a> at the HYPE-XR workshop.</div>
+      </li>
+
+      <li class="news-item">
         <div class="news-date">Aug 2026</div>
         <div class="news-body">Finished a summer as Principal Research Assistant at the <strong>Hennepin Healthcare Research Institute</strong>, building a high-density EMG recording system for a motor-complete spinal cord injury restoration trial.</div>
       </li>
@@ -146,7 +151,7 @@
       <!-- EDIT: set the real month for this paper -->
       <li class="news-item">
         <div class="news-date">2026</div>
-        <div class="news-body"><em>NPR Locomotion</em> was accepted to <strong>IEEE TVCG</strong> and will appear in the proceedings of IEEE ISMAR.</div>
+        <div class="news-body"><em>NPR Locomotion</em> was accepted as an <strong>IEEE TVCG</strong> journal paper, to be presented at IEEE ISMAR 2026.</div>
       </li>
 
       <li class="news-item">
@@ -180,29 +185,52 @@
 
     <ol class="pubs">
 
+      <!-- Each paper: "PDF" links the author copy in assets/papers/, and the
+           BibTeX button reveals the citation block right below the links. -->
       <li class="pub">
         <div class="pub-year">2026</div>
         <div class="pub-body">
           <h3 class="pub-title">NPR Locomotion: Improving Spatial Awareness and Cybersickness with Sketch-Like Continuous Transitions</h3>
-          <p class="pub-authors"><strong>Maryam Kameli</strong>, Kiana Vaziri, Victoria Interrante</p>
-          <p class="pub-venue">IEEE Transactions on Visualization and Computer Graphics <span class="badge">Proc. IEEE ISMAR</span></p>
+          <p class="pub-authors"><strong>Maryam Kameli</strong>, Koorosh Vaziri, Victoria Interrante</p>
+          <p class="pub-venue">IEEE Transactions on Visualization and Computer Graphics, presented at IEEE ISMAR 2026 <span class="badge">TVCG</span></p>
           <p class="pub-links">
-            <a href="#">Paper</a>
-            <a href="#">DOI</a>
-            <a href="#">Video</a>
+            <a href="assets/papers/kameli2026npr-locomotion.pdf">PDF</a>
+            <button class="bib-btn" type="button" aria-expanded="false" aria-controls="bib-npr">BibTeX</button>
           </p>
+          <div class="bib" id="bib-npr" hidden>
+            <button class="bib-copy" type="button">Copy</button>
+<pre>@article{kameli2026npr,
+  author  = {Kameli, Maryam and Vaziri, Koorosh and Interrante, Victoria},
+  title   = {{NPR} Locomotion: Improving Spatial Awareness and Cybersickness
+             with Sketch-Like Continuous Transitions},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  year    = {2026},
+  note    = {Presented at IEEE ISMAR 2026}
+}</pre>
+          </div>
         </div>
       </li>
 
       <li class="pub">
         <div class="pub-year">2026</div>
         <div class="pub-body">
-          <h3 class="pub-title">Does Avatar Photorealism Enhance Social Presence? Comparing Captured vs. Crafted Models</h3>
-          <p class="pub-authors"><strong>Maryam Kameli</strong>, Paulami Bala, Victoria Interrante</p>
-          <p class="pub-venue">IEEE ISMAR Workshop on Hyperrealism in XR <span class="badge">Hype-XR</span></p>
+          <h3 class="pub-title">Does Avatar Photorealism Enhance Social Presence? A Proposed Study Comparing Captured, Crafted, and Stylized Models</h3>
+          <p class="pub-authors"><strong>Maryam Kameli</strong>, Praneet Bala, Victoria Interrante</p>
+          <p class="pub-venue">IEEE ISMAR 2026 Workshop on Hyperrealism in XR <span class="badge">HYPE-XR</span></p>
           <p class="pub-links">
-            <a href="#">Paper</a>
+            <a href="assets/papers/kameli2026avatar-photorealism.pdf">PDF</a>
+            <button class="bib-btn" type="button" aria-expanded="false" aria-controls="bib-avatar">BibTeX</button>
           </p>
+          <div class="bib" id="bib-avatar" hidden>
+            <button class="bib-copy" type="button">Copy</button>
+<pre>@inproceedings{kameli2026avatar,
+  author    = {Kameli, Maryam and Bala, Praneet and Interrante, Victoria},
+  title     = {Does Avatar Photorealism Enhance Social Presence? {A} Proposed
+               Study Comparing Captured, Crafted, and Stylized Models},
+  booktitle = {IEEE ISMAR 2026 Workshop on Hyperrealism in XR (HYPE-XR)},
+  year      = {2026}
+}</pre>
+          </div>
         </div>
       </li>
 
@@ -231,6 +259,9 @@
       </li>
 
     </ol>
+
+    <!-- IEEE requires this notice wherever authors post their own copies. -->
+    <p class="pub-note">&copy; 2026 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.</p>
   </div>
 </section>
 
@@ -445,7 +476,7 @@
       <a href="https://github.com/maryamkameli">GitHub</a>
     </p>
     <!-- EDIT: bump this when you update the site -->
-    <p class="footer-note">Last updated August 2026</p>
+    <p class="footer-note">Last updated October 2026</p>
   </div>
 </footer>
 

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>NPR Locomotion &middot; Maryam Kameli</title>
+<meta name="description" content="Sketch-like continuous transitions for VR travel: the scene turns into a line drawing while you move and returns to full color when you stop. IEEE TVCG 2026, presented at IEEE ISMAR.">
+<meta name="author" content="Maryam Kameli">
+
+<script>
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fcfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1116" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPR Locomotion: sketch-like transitions for VR travel">
+<meta property="og:description" content="The scene turns into a line drawing while you move through VR and returns to full color when you stop. IEEE TVCG 2026.">
+<meta property="og:url" content="https://maryamkameli.github.io/npr.html">
+<meta property="og:image" content="https://maryamkameli.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A virtual museum room split down the middle: full color on the left, the same view as a black-and-white line drawing on the right.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://maryamkameli.github.io/npr.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>M</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="./">Maryam Kameli</a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Site">
+      <a href="./#research">Research</a>
+      <a href="./#publications">Publications</a>
+      <a href="./#engineering">Engineering</a>
+      <a href="assets/cv.pdf">CV</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.4 12H2M22 12h-2.4M6.0 6.0 4.3 4.3M19.7 19.7 18 18M18 6.0l1.7-1.7M4.3 19.7 6.0 18"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.2A8.2 8.2 0 0 1 9.8 3.8a8.4 8.4 0 1 0 10.4 10.4z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+
+  <header class="proj-head">
+    <a class="back" href="./#npr">&larr; Maryam Kameli</a>
+    <p class="eyebrow">IEEE Transactions on Visualization and Computer Graphics, 2026 &middot; Proc. IEEE ISMAR</p>
+    <h1 class="proj-title">NPR Locomotion: Improving Spatial Awareness and Cybersickness with Sketch-Like Continuous Transitions</h1>
+    <p class="proj-authors"><strong>Maryam Kameli</strong>, Koorosh Vaziri, Victoria Interrante</p>
+    <p class="proj-venue">University of Minnesota</p>
+    <p class="proj-links">
+      <a href="https://ieeexplore.ieee.org/document/11755551">Paper (IEEE Xplore)</a>
+      <a href="#video">Study video</a>
+      <a href="#cite">BibTeX</a>
+      <a href="https://cse.umn.edu/cs/news/maryam-kameli-proposes-vr-technique-limit-cybersickness-and-improve-spatial-awareness">UMN news story</a>
+    </p>
+  </header>
+
+  <figure class="wipe" data-wipe>
+    <div class="wipe-stage" style="--pos:50%">
+      <video muted loop playsinline preload="metadata" data-autoplay
+             poster="assets/video/npr-compare-poster.jpg" aria-hidden="true">
+        <source src="assets/video/npr-compare.mp4" type="video/mp4">
+      </video>
+      <canvas aria-hidden="true"></canvas>
+      <span class="wipe-label wipe-label-l" aria-hidden="true">Full color</span>
+      <span class="wipe-label wipe-label-r" aria-hidden="true">Sketch transition</span>
+      <div class="wipe-line" aria-hidden="true"></div>
+      <div class="wipe-knob" role="slider" tabindex="0"
+           aria-label="Comparison handle: full color on the left, sketch transition on the right"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percent">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5M15 7l5 5-5 5"/></svg>
+      </div>
+      <button class="vid-toggle" type="button" aria-label="Pause video">
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+      </button>
+    </div>
+    <figcaption>One route through the virtual museum, recorded twice and lined up frame by frame. Drag the handle (or focus it and use the arrow keys) to compare full-color travel with the sketch transition. At the start and end of the move both sides are in full color.</figcaption>
+  </figure>
+
+  <section class="proj-section" id="idea" aria-labelledby="idea-h">
+    <h2 id="idea-h">The idea</h2>
+    <div class="proj-text">
+      <p>Virtual environments are usually bigger than the room you are standing in, so VR apps let you travel without walking. The two common options pull in opposite directions. Continuous motion keeps you oriented, but watching the world stream past while your body stays still is a well-known cause of cybersickness. Teleporting avoids that, but every jump cuts the visual thread between where you were and where you are now.</p>
+      <p>The sketch transition keeps the continuous motion and changes what you see during it. As soon as the viewpoint starts moving, the scene switches to a black-and-white, sketch-like rendering: high-frequency surface textures are removed and only the structural edges remain. The viewpoint moves at the same speed as in full-color travel. When it arrives, the full rendering comes back, so every stop is still a detailed scene to look around in.</p>
+      <p>Architects already use sketch-style walkthroughs to show clients a space without making them sick. We wanted to know whether the same idea holds up for VR travel in general.</p>
+    </div>
+  </section>
+
+  <section class="proj-section" id="conditions" aria-labelledby="conditions-h">
+    <h2 id="conditions-h">Three ways to travel</h2>
+    <div class="proj-text">
+      <p>Each clip shows one move between stops in the museum. The next stop is marked by a small figure standing in the room.</p>
+    </div>
+    <div class="clips">
+      <figure class="clip">
+        <div class="clip-media">
+          <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/fcl-poster.jpg" aria-label="Full-color travel through the museum">
+            <source src="assets/video/fcl.mp4" type="video/mp4">
+          </video>
+          <button class="vid-toggle" type="button" aria-label="Pause video">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+          </button>
+        </div>
+        <figcaption><b>Full color (FCL)</b>The museum keeps all its textures and detail while the viewpoint glides to the next stop at 1.5&nbsp;m/s.</figcaption>
+      </figure>
+      <figure class="clip">
+        <div class="clip-media">
+          <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/npr-poster.jpg" aria-label="The same move with the sketch transition">
+            <source src="assets/video/npr.mp4" type="video/mp4">
+          </video>
+          <button class="vid-toggle" type="button" aria-label="Pause video">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+          </button>
+        </div>
+        <figcaption><b>Sketch transition (NPR)</b>Same path and speed, but during the move the scene is drawn as black lines on white. Color returns on arrival.</figcaption>
+      </figure>
+      <figure class="clip">
+        <div class="clip-media">
+          <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/jmp-poster.jpg" aria-label="Teleporting to the next stop">
+            <source src="assets/video/jmp.mp4" type="video/mp4">
+          </video>
+          <button class="vid-toggle" type="button" aria-label="Pause video">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+          </button>
+        </div>
+        <figcaption><b>Teleport (JMP)</b>No motion and no visual feedback. The view jumps straight to the figure's position and facing direction.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proj-section" id="task" aria-labelledby="task-h">
+    <h2 id="task-h">What participants did at each stop</h2>
+    <div class="split">
+      <figure class="clip">
+        <div class="clip-media">
+          <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/tasks-poster.jpg" aria-label="A participant turning to point back at earlier stops">
+            <source src="assets/video/tasks.mp4" type="video/mp4">
+          </video>
+          <button class="vid-toggle" type="button" aria-label="Pause video">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+          </button>
+        </div>
+        <figcaption>The pointing judgments, shown here in the teleport condition.</figcaption>
+      </figure>
+      <div class="proj-text">
+        <p>After every move, participants answered four quick questions:</p>
+        <ol>
+          <li>Point to the previous stop and estimate out loud how far away it is.</li>
+          <li>Do the same for the stop before that.</li>
+          <li>And for the one three stops back.</li>
+          <li>Rate their discomfort from 0 to 10 on the Fast Motion Sickness scale.</li>
+        </ol>
+        <p>Pointing and distance errors show how well someone kept track of the space. The discomfort ratings, together with the Simulator Sickness Questionnaire, track cybersickness.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-section" id="findings" aria-labelledby="findings-h">
+    <h2 id="findings-h">What we found</h2>
+    <div class="proj-text">
+      <p>Thirty-six participants took the guided museum tour with each of the three methods. Full-color travel gave the best spatial understanding and the most cybersickness. Teleporting caused the least cybersickness and the weakest spatial understanding. The sketch transition fell between the two on both measures.</p>
+      <p>For architectural walkthroughs and similar uses, where people need to understand a space and also stay in it long enough to explore, that trade-off can be worth making. The paper has the full analysis and statistics.</p>
+    </div>
+  </section>
+
+  <section class="proj-section" id="video" aria-labelledby="video-h">
+    <h2 id="video-h">Study video</h2>
+    <figure class="fig">
+      <div class="player">
+        <video controls preload="none" playsinline poster="assets/video/npr-study-video-poster.jpg">
+          <source src="assets/video/npr-study-video.mp4" type="video/mp4">
+          <a href="assets/video/npr-study-video.mp4">Download the study video (MP4)</a>
+        </video>
+      </div>
+      <figcaption>2 minutes 26 seconds, no sound. It walks through the three conditions and the task, with a title card for each.</figcaption>
+    </figure>
+  </section>
+
+  <section class="proj-section" id="cite" aria-labelledby="cite-h">
+    <h2 id="cite-h">Cite</h2>
+    <div class="proj-bib">
+      <div class="bib">
+        <button class="bib-copy" type="button">Copy</button>
+<pre>@article{kameli2026npr,
+  author  = {Kameli, Maryam and Vaziri, Koorosh and Interrante, Victoria},
+  title   = {{NPR} Locomotion: Improving Spatial Awareness and Cybersickness
+             with Sketch-Like Continuous Transitions},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  year    = {2026},
+  pages   = {1--11},
+  doi     = {10.1109/TVCG.2026.3747469}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p><a href="mailto:kamel026@umn.edu">kamel026@umn.edu</a></p>
+    <p class="footer-links">
+      <a href="./">Home</a>
+      <a href="https://scholar.google.com/citations?user=oxiSefEAAAAJ">Scholar</a>
+      <a href="https://github.com/maryamkameli">GitHub</a>
+    </p>
+    <p class="footer-note">Last updated November 2026</p>
+  </div>
+</footer>
+
+<p class="sr-only" id="liveStatus" role="status" aria-live="polite"></p>
+<script src="main.js"></script>
+</body>
+</html>

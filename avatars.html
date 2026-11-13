@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Avatar Photorealism &middot; Maryam Kameli</title>
+<meta name="description" content="Three avatars of the same person, captured with 3D Gaussian Splatting, crafted as a MetaHuman, and stylized, for a proposed VR study on whether photorealism changes social presence. Hype-XR workshop, IEEE ISMAR 2026.">
+<meta name="author" content="Maryam Kameli">
+
+<script>
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fcfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1116" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Does avatar photorealism enhance social presence?">
+<meta property="og:description" content="One person as a 3D Gaussian Splatting avatar, a MetaHuman, and a stylized avatar, for a proposed VR study. Hype-XR, IEEE ISMAR 2026.">
+<meta property="og:url" content="https://maryamkameli.github.io/avatars.html">
+<meta property="og:image" content="https://maryamkameli.github.io/assets/og-avatars.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Four images of the same woman: a video frame, a Gaussian splatting avatar, a MetaHuman, and a cartoon avatar.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://maryamkameli.github.io/avatars.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>M</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="./">Maryam Kameli</a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Site">
+      <a href="./#research">Research</a>
+      <a href="./#publications">Publications</a>
+      <a href="./#engineering">Engineering</a>
+      <a href="assets/cv.pdf">CV</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.4 12H2M22 12h-2.4M6.0 6.0 4.3 4.3M19.7 19.7 18 18M18 6.0l1.7-1.7M4.3 19.7 6.0 18"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.2A8.2 8.2 0 0 1 9.8 3.8a8.4 8.4 0 1 0 10.4 10.4z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+
+  <header class="proj-head">
+    <a class="back" href="./#avatars">&larr; Maryam Kameli</a>
+    <p class="eyebrow">Hype-XR: 1st Workshop on Hyperrealism in XR in the Era of Radiance Fields &middot; IEEE ISMAR 2026</p>
+    <h1 class="proj-title">Does Avatar Photorealism Enhance Social Presence? A Proposed Study Comparing Captured, Crafted, and Stylized Models</h1>
+    <p class="proj-authors"><strong>Maryam Kameli</strong>, Praneet Bala, Victoria Interrante</p>
+    <p class="proj-venue">University of Minnesota</p>
+    <p class="proj-links">
+      <a href="assets/papers/kameli2026avatar-photorealism.pdf">Paper (PDF)</a>
+      <a href="#cite">BibTeX</a>
+    </p>
+  </header>
+
+  <figure class="ladder-fig">
+    <ul class="ladder">
+      <li>
+        <img src="assets/img/realism-real.jpg" width="440" height="440" decoding="async"
+             alt="Video frame of Maryam in a denim shirt, turned slightly to her left.">
+        <p><b>Real</b>video frame</p>
+      </li>
+      <li>
+        <img src="assets/img/realism-captured.jpg" width="440" height="440" decoding="async"
+             alt="Her 3D Gaussian Splatting avatar from the same viewpoint, close to the photo but slightly softer.">
+        <p><b>Captured</b>3D Gaussian Splatting (GaussianAvatars)</p>
+      </li>
+      <li>
+        <img src="assets/img/realism-crafted.jpg" width="440" height="440" decoding="async"
+             alt="A MetaHuman digital double of her in Unreal Engine, facing the camera.">
+        <p><b>Crafted</b>MetaHuman, Unreal Engine</p>
+      </li>
+      <li>
+        <img src="assets/img/realism-stylized.jpg" width="440" height="440" decoding="async"
+             alt="A cartoon-style Meta avatar of her with big curly hair and a denim jacket.">
+        <p><b>Stylized</b>Meta avatar, Horizon Worlds</p>
+      </li>
+    </ul>
+    <div class="ladder-axis" aria-hidden="true"><span>more photographic</span><span>more stylized</span></div>
+    <figcaption>One person, four ways. The three avatars are the conditions of the proposed study; the video frame is the reference they are compared against.</figcaption>
+  </figure>
+
+  <section class="proj-section" id="question" aria-labelledby="question-h">
+    <h2 id="question-h">The question</h2>
+    <div class="proj-text">
+      <p>VR research has mostly found that visual realism matters less than you might expect. Behavior, like gaze and motion, tends to matter more, stylized avatars often do as well as realistic ones, and very realistic faces risk the uncanny valley. But nearly all of that work used avatars that were clearly not real. 3D Gaussian Splatting can now build an avatar of a specific person that is hard to tell from video, so those findings may not carry over.</p>
+      <p>We propose a study that holds identity and behavior fixed and varies only how the person is rendered: captured, crafted, or stylized. Alongside the ratings, we will compute PSNR, SSIM, and LPIPS for each avatar to see whether the metrics graphics papers report have anything to do with what people experience.</p>
+    </div>
+  </section>
+
+  <section class="proj-section" id="captured" aria-labelledby="captured-h">
+    <h2 id="captured-h">The captured avatar</h2>
+    <div class="proj-text">
+      <p>The captured avatar is a GaussianAvatars model: 3D Gaussians bound to the triangles of a FLAME head mesh, so the splats move with the mesh's expression and pose parameters. GaussianAvatars was built for studio rigs where every camera points at the face. My capture came from a 25-camera rig in an ordinary room, framing the upper body, so the head is a small patch in each image.</p>
+      <p>That mismatch caused most of the work. The 3DGS rasterizer assumes a centered principal point, and a plain crop around the off-center head moves it, so nothing rendered. I re-aim each camera at the tracked mesh's vertex centroid with a homography built only from camera rotation, which centers the head and leaves the FLAME fit in world space untouched. Composing lens undistortion and that warp into one resampling step instead of two made the training images 44% sharper (Laplacian variance over the foreground) and brought back the eyes and eyebrows. The trained model exports as a standard 3DGS point cloud and renders in Unity. It is drivable through its FLAME parameters in the GaussianAvatars viewer, and FLAME control inside Unity is the next step.</p>
+    </div>
+    <figure class="fig">
+      <a class="fig-link" href="assets/img/avatar-heldout.jpg">
+        <img src="assets/img/avatar-heldout.jpg" width="2000" height="603" loading="lazy" decoding="async"
+             alt="Seven pairs of images. Top row: real video frames of Maryam from different angles. Bottom row: matching renders of her captured avatar, with image-quality scores under each column.">
+      </a>
+      <figcaption>Real frames (top) and the captured avatar (bottom) on seven held-out poses and viewpoints, with PSNR, SSIM, LPIPS, and face-only PSNR under each column. Click for full size.</figcaption>
+    </figure>
+    <div class="proj-text" style="margin-top:22px">
+      <p>On unseen data the avatar reaches PSNR 22.1, SSIM 0.87, and LPIPS 0.10. GaussianAvatars reports 26.0, 0.910, and 0.076 under the same protocol on NeRSemble studio captures. The perceptual gap is small. The larger pixel gap follows the head's resolution, which in our room capture is about an order of magnitude below a studio face rig. Viewpoint matters too: well-covered views reach about 25.5&nbsp;dB on the face, while oblique views the cameras barely saw drop to 17.6&nbsp;dB.</p>
+      <p>Building it also showed the metric problem twice. During training, held-out PSNR peaked early and then fell while LPIPS kept improving, so the two metrics ranked the same checkpoints in opposite order. And the single-resampling fix visibly sharpened the irises and eyebrows while barely moving the averages (PSNR 22.1 against 22.2).</p>
+    </div>
+    <figure class="fig">
+      <img src="assets/img/avatar-training.jpg" width="2000" height="550" loading="lazy" decoding="async"
+           alt="Three line charts over 600,000 training iterations: loss terms on a log scale, held-out PSNR, which peaks early and then declines, and held-out LPIPS, which keeps decreasing.">
+      <figcaption>Training over 600k iterations. Left: loss terms on a log scale. Middle: held-out PSNR. Right: held-out LPIPS (lower is better).</figcaption>
+    </figure>
+  </section>
+
+  <section class="proj-section" id="crafted" aria-labelledby="crafted-h">
+    <h2 id="crafted-h">The crafted and stylized avatars</h2>
+    <div class="proj-text">
+      <p>The crafted avatar is an Epic MetaHuman made from an iPhone scan taken with Polycam. I cleaned the scan in Blender, prepared the face mesh for Unreal Engine, and ran MetaHuman's identity solve against it. The result keeps my face shape but uses MetaHuman's own synthesized skin texture rather than the scan's.</p>
+      <p>The stylized avatar comes from Meta's avatar tool, built from a phone capture and rendered as a cartoon figure for Horizon Worlds. It makes no attempt at photographic likeness, and it is close to what a large share of social VR users see today.</p>
+    </div>
+    <figure class="fig">
+      <img src="assets/img/metahuman-steps.jpg" width="2139" height="420" loading="lazy" decoding="async"
+           alt="Four steps: a gray 3D scan of Maryam seated, a dense wireframe of her face, the face with tracked landmarks during fitting, and the finished MetaHuman.">
+      <figcaption>Building the MetaHuman: the raw Polycam scan, the cleaned face mesh, the identity solve with tracked facial landmarks, and the result in Unreal Engine.</figcaption>
+    </figure>
+  </section>
+
+  <section class="proj-section" id="study" aria-labelledby="study-h">
+    <h2 id="study-h">The proposed study</h2>
+    <div class="proj-text">
+      <p>The three avatars are crossed with three versions of the same real environment (captured, photorealistically modeled, and stylized), which makes nine static scenes. Every participant sees all nine in counterbalanced order. The avatar is seated, and participants meet the real person before the session so they can judge resemblance.</p>
+      <p>After each scene, participants rate co-presence, interpersonal trust, eeriness, perceived realism, and identity fidelity, and we measure spatial presence with the IPQ. We plan to recruit 36 people; a power analysis for a medium within-subjects effect (d<sub>z</sub>&nbsp;=&nbsp;0.5, &alpha;&nbsp;=&nbsp;.05, power&nbsp;=&nbsp;.80) called for 34.</p>
+      <p>What we expect:</p>
+      <ul>
+        <li>Co-presence and trust will differ across the three avatars, but not necessarily in step with realism.</li>
+        <li>Eeriness will peak for the mid-realism MetaHuman.</li>
+        <li>PSNR, SSIM, and LPIPS will correlate at best weakly with what people report.</li>
+      </ul>
+      <p>Longer term, I'm working toward an avatar pipeline that pairs 3D Gaussian Splatting with diffusion models, so one identity can be rendered at any level of realism, not only at the three points this study compares.</p>
+    </div>
+  </section>
+
+  <section class="proj-section" id="cite" aria-labelledby="cite-h">
+    <h2 id="cite-h">Cite</h2>
+    <div class="proj-bib">
+      <div class="bib">
+        <button class="bib-copy" type="button">Copy</button>
+<pre>@inproceedings{kameli2026avatar,
+  author    = {Kameli, Maryam and Bala, Praneet and Interrante, Victoria},
+  title     = {Does Avatar Photorealism Enhance Social Presence? {A} Proposed
+               Study Comparing Captured, Crafted, and Stylized Models},
+  booktitle = {IEEE ISMAR 2026 Workshop on Hyperrealism in XR (HYPE-XR)},
+  year      = {2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p><a href="mailto:kamel026@umn.edu">kamel026@umn.edu</a></p>
+    <p class="footer-links">
+      <a href="./">Home</a>
+      <a href="https://scholar.google.com/citations?user=oxiSefEAAAAJ">Scholar</a>
+      <a href="https://github.com/maryamkameli">GitHub</a>
+    </p>
+    <p class="footer-note">Last updated November 2026</p>
+  </div>
+</footer>
+
+<p class="sr-only" id="liveStatus" role="status" aria-live="polite"></p>
+<script src="main.js"></script>
+</body>
+</html>

@@ -589,6 +589,11 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .more[open] summary::before { transform: rotate(45deg); margin-top: -5px; }
 .more .diagram { margin-top: 10px; }
 
+/* two images side by side at equal height (flex values = aspect ratios) */
+.pair-fit { display: flex; gap: 10px; margin-top: 14px; max-width: 760px; align-items: flex-start; }
+.pair-fit a { display: block; min-width: 0; }
+.pair-fit img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 6px; }
+
 /* renders of the HD-EMG boards */
 .renders { display: grid; gap: 10px; margin-top: 14px; max-width: 760px; }
 .renders a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid #1f2430; background: #10141c; }

@@ -39,7 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
 <!-- EDIT: bump the ?v= number whenever you change style.css or main.js, so browsers load the new file -->
-<link rel="stylesheet" href="style.css?v=20261114b">
+<link rel="stylesheet" href="style.css?v=20261114c">
 
 <!-- Lets search engines connect this page to your Scholar, LinkedIn and GitHub profiles. -->
 <script type="application/ld+json">
@@ -443,11 +443,11 @@
         </div>
         <div class="row-body">
           <p>Pepper's own sensors weren't enough to map a nursing home: the camera's field of view is narrow, the odometry drifts, and the navigation stack is closed source. We mounted a 360&deg; LiDAR and an NVIDIA Jetson Nano on the robot and offloaded mapping, localization, and path planning to them over ROS (Hector SLAM, AMCL, move_base). The robot was deployed in nine Minnesota nursing homes, with a web app showing the live facility map and a dashboard where staff set up activity sessions like bingo, yoga, and conversation.</p>
-          <figure class="row-figure">
-            <img src="assets/robot-slam-map.jpg" width="1070" height="612" loading="lazy" decoding="async"
-                 alt="A two-dimensional occupancy grid map of a single-floor care facility, with corridors, rooms, doorways, and furniture outlines traced by the robot's LiDAR.">
-            <figcaption>Occupancy map of a care facility, built from the robot's LiDAR during autonomous exploration.</figcaption>
-          </figure>
+          <div class="pair-fit">
+            <a href="assets/robot-slam-map.jpg" style="flex: 1.748"><img src="assets/robot-slam-map.jpg" width="1070" height="612" loading="lazy" decoding="async" alt="Two-dimensional occupancy grid map of the Multicultural Center at UMD, made with Hector SLAM from the robot's LiDAR, showing corridors, rooms, doorways, and small dots where chair and table legs stand."></a>
+            <a href="assets/img/pepper-lidar.jpg" style="flex: 0.693"><img src="assets/img/pepper-lidar.jpg" width="395" height="570" loading="lazy" decoding="async" alt="Pepper standing in front of a wood-paneled wall, with a small black RPLiDAR unit mounted on the front of its base."></a>
+          </div>
+          <p class="gallery-caption">Left: map of the <a href="https://diversity.d.umn.edu/multicultural-center">Multicultural Center at UMD</a> (233 Kirby Student Center), built with Hector SLAM while we drove the robot by keyboard. Details down to chair legs show up. Right: Pepper with the RPLiDAR mounted on its base. Both are from our CSCI 2022 paper.</p>
           <p class="row-links"><a href="#pub-robots">Paper (CSCI 2022)</a> &middot; <a href="https://github.com/maryamkameli/Autonomous-Navigation">Code</a> &middot; Press coverage of the deployment: <a href="https://www.mprnews.org/story/2022/07/07/nursing-home-robots-dance-sing-and-watch-for-signs-of-trouble">MPR News</a>, <a href="https://www.cbsnews.com/news/robot-dementia-nursing-home-minnesota">CBS News</a></p>
           <p class="tags"><span>ROS</span><span>LiDAR</span><span>SLAM</span><span>Jetson Nano</span><span>Web app</span></p>
         </div>
@@ -605,14 +605,24 @@
         </div>
       </article>
 
+      <article class="row">
+        <div class="row-title">
+          <h4>Sensors and IoT</h4>
+          <p class="row-meta">Sensors and Internet of Things &middot; Fall 2022</p>
+        </div>
+        <div class="row-body">
+          <p>Python labs on a Raspberry Pi with Grove sensors: a potentiometer driving a servo and an LED dimmer over PWM, a light sensor wired to a buzzer that plays SOS, a doorbell button that tweets whether the room is dark, Bluetooth RFCOMM sockets, and a thermostat. In the thermostat, a DHT11 reads the room, a knob sets the target, and two LEDs stand in for the heat and AC relays. For the final project I classified emotional responses to video clips from EEG, EMG, and EDA.</p>
+          <figure class="plot">
+            <a href="assets/img/iot-thermostat.png"><img src="assets/img/iot-thermostat.png" width="1600" height="560" loading="lazy" decoding="async" alt="Left, a wiring diagram: a DHT11 temperature sensor on port 12 and a rotary knob on A0 feed a Raspberry Pi with a Grove Base Hat, which drives a red LED for heat on GPIO 16 and a green LED for AC on GPIO 4. Right, a simulated run: the room warms with the heat on until it reaches the 22 degree setpoint, cools until it drops 3 degrees below, and heats again; later the setpoint drops to 20 and the AC cycles the same way."></a>
+            <figcaption>The thermostat's wiring, taken from my code, and a simulated run of my control loop (the room model is made up). Heat or AC runs until the reading reaches the setpoint, then both stay off until the room drifts more than 3 &deg;C away.</figcaption>
+          </figure>
+          <p class="tags"><span>Raspberry Pi</span><span>Python</span><span>GPIO and PWM</span><span>I2C ADC</span><span>Bluetooth</span></p>
+        </div>
+      </article>
+
     </div>
 
     <ul class="minis">
-      <li>
-        <h4>Sensors and IoT</h4>
-        <p class="row-meta">Sensors and Internet of Things &middot; Fall 2022</p>
-        <p>Raspberry Pi labs in Python, from PWM servo control to a Bluetooth client and server and a thermostat with a web page. For the final project I classified emotional responses to video clips from EEG, EMG, and EDA.</p>
-      </li>
       <li>
         <h4>Neural machine translation</h4>
         <p class="row-meta">Advanced NLP &middot; Spring 2022</p>
@@ -822,6 +832,6 @@
 </footer>
 
 <p class="sr-only" id="liveStatus" role="status" aria-live="polite"></p>
-<script src="main.js?v=20261114b"></script>
+<script src="main.js?v=20261114c"></script>
 </body>
 </html>

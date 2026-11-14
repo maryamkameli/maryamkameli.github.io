@@ -39,7 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
 <!-- EDIT: bump the ?v= number whenever you change style.css or main.js, so browsers load the new file -->
-<link rel="stylesheet" href="style.css?v=20261114d">
+<link rel="stylesheet" href="style.css?v=20261114e">
 
 <!-- Lets search engines connect this page to your Scholar, LinkedIn and GitHub profiles. -->
 <script type="application/ld+json">
@@ -427,11 +427,11 @@
         </div>
         <div class="row-body">
           <p>The lab studies epidural spinal cord stimulation for people with spinal cord injury. I designed the high-density EMG system that maps stimulation patterns to leg-muscle activation: flexible 128-contact electrode sleeves for the thigh and calf, laid out in KiCad, each read by a 36 &times; 26 mm headstage built around two bare-die Intan RHD2164 chips, for 512 channels across both legs. The main layout trade-off was spatial sampling against electrode impedance and motion artifacts. I took the arrays through DFM review with the fab house until they were released for fabrication in October 2026. I also built the normalized SQLite database and analysis pipeline for the 12-month trial, which tunes stimulation with Gaussian-process Bayesian optimization on each patient's preferences, so the clinical team can compare patients and cluster subgroups.</p>
-          <div class="renders">
-            <a href="assets/img/hhri-arrays-render.jpg"><img src="assets/img/hhri-arrays-render.jpg" width="2000" height="822" loading="lazy" decoding="async" alt="Render of the two flexible electrode arrays on amber polyimide: a wide trapezoid for the thigh and a smaller one for the calf, each with 128 round gold contacts, routed traces, and a narrow tail that ends in a board-to-board connector. A 100 mm scale bar sits in the corner."></a>
-            <a href="assets/img/hhri-headstage-render.jpg"><img src="assets/img/hhri-headstage-render.jpg" width="2000" height="997" loading="lazy" decoding="async" alt="Render of the 36 by 26 mm headstage: two bare silicon amplifier dies with gold wire bonds, a TSSOP chip between them, two small Omnetics connectors at the top, test points and tiny passives, and a long Samtec connector along the bottom edge. A magnifier shows the edge of one die, where gold wires run from the die pads to two staggered rows of bond fingers."></a>
+          <div class="pair-fit renders-small">
+            <a href="assets/img/hhri-arrays-render.jpg" style="flex: 2.433"><img src="assets/img/hhri-arrays-render.jpg" width="2000" height="822" loading="lazy" decoding="async" alt="Render of the two flexible electrode arrays on amber polyimide: a wide trapezoid for the thigh and a smaller one for the calf, each with 128 round gold contacts, routed traces, and a narrow tail that ends in a board-to-board connector. A 100 mm scale bar sits in the corner."></a>
+            <a href="assets/img/hhri-headstage-render.jpg" style="flex: 2.006"><img src="assets/img/hhri-headstage-render.jpg" width="2000" height="997" loading="lazy" decoding="async" alt="Render of the 36 by 26 mm headstage: two bare silicon amplifier dies with gold wire bonds, a TSSOP chip between them, two small Omnetics connectors at the top, test points and tiny passives, and a long Samtec connector along the bottom edge. A magnifier shows the edge of one die, where gold wires run from the die pads to two staggered rows of bond fingers."></a>
           </div>
-          <p class="gallery-caption">Renders of my KiCad layouts. Top: the thigh and calf arrays, 128 contacts each. Bottom: the headstage, with a close-up of the staggered bond fingers I laid out for wire bonding the bare dies. Also: <a href="assets/img/hhri-system.jpg">how the parts connect</a>.</p>
+          <p class="gallery-caption">Renders of my KiCad layouts: the thigh and calf arrays, 128 contacts each, and the headstage, with a close-up of the staggered bond fingers I laid out for wire bonding the bare dies. Click either one to enlarge. Also: <a href="assets/img/hhri-system.jpg">how the parts connect</a>.</p>
           <p class="tags"><span>HD-EMG</span><span>KiCad</span><span>Flex PCB</span><span>Intan RHD2164</span><span>SQLite</span><span>Python</span><span>Bayesian optimization</span></p>
         </div>
       </article>
@@ -496,8 +496,8 @@
         </div>
         <div class="row-body">
           <p>A semi-automatic pipeline from video to animation. ViTPose gives a 17-keypoint pose for every frame, and our OpenGL viewer draws it as a color-coded skeleton. Pose estimates jitter from frame to frame, so we compared Butterworth and Savitzky-Golay filtering with spline interpolation and approximation. For 3D, SAM 3D Body recovers a body mesh from single images, and we mapped top-view keypoints of a crawling baby onto a rigged 3D model in Unity to animate it.</p>
-          <div class="media-pair">
-          <figure class="clip row-clip">
+          <div class="media-fit">
+          <figure class="clip row-clip" style="flex: 1.89">
             <div class="clip-media" style="aspect-ratio: 960 / 508">
               <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/mocap-smoothing-poster.jpg" aria-label="Six stick-figure skeletons of the same dancer moving in sync, each smoothed differently">
                 <source src="assets/video/mocap-smoothing.mp4" type="video/mp4">
@@ -509,7 +509,7 @@
             </div>
             <figcaption>One dancer's pose track run through six smoothing variants in our OpenGL viewer.</figcaption>
           </figure>
-          <figure class="clip row-clip">
+          <figure class="clip row-clip" style="flex: 1.294">
             <div class="clip-media" style="aspect-ratio: 559 / 432; background:#6b6460">
               <img src="assets/img/mocap-rig.jpg" width="559" height="432" loading="lazy" decoding="async" alt="A rigged 3D baby model on all fours, with its skeleton and joint targets visible, posed from pose-tracking data.">
             </div>
@@ -806,6 +806,6 @@
 </footer>
 
 <p class="sr-only" id="liveStatus" role="status" aria-live="polite"></p>
-<script src="main.js?v=20261114d"></script>
+<script src="main.js?v=20261114e"></script>
 </body>
 </html>

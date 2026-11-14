@@ -594,10 +594,13 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .pair-fit a { display: block; min-width: 0; }
 .pair-fit img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 6px; }
 
-/* renders of the HD-EMG boards */
-.renders { display: grid; gap: 10px; margin-top: 14px; max-width: 760px; }
-.renders a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid #1f2430; background: #10141c; }
-.renders img { width: 100%; height: auto; display: block; }
+/* renders of the HD-EMG boards: small thumbnails, click to enlarge */
+.renders-small { max-width: 560px; }
+.renders-small img { border-color: #1f2430; background: #10141c; }
+
+/* video + image side by side at equal height (flex values = aspect ratios) */
+.media-fit { display: flex; gap: 12px; align-items: flex-start; max-width: 760px; margin-top: 14px; }
+.media-fit > figure { min-width: 0; margin: 0; max-width: none; }
 
 /* result plots (selective classification) */
 .plot { margin: 14px 0 0; max-width: 760px; }
@@ -768,6 +771,8 @@ h1, h2, h3, h4 { text-wrap: balance; }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery-3 { grid-template-columns: 1fr; }
   .media-pair { grid-template-columns: 1fr; }
+  .media-fit { flex-direction: column; }
+  .media-fit > figure { flex: none !important; width: 100%; }
   .minis { grid-template-columns: 1fr; }
   .clips { grid-template-columns: 1fr; gap: 22px; }
   .wipe-stage { border-radius: 8px; }

@@ -39,7 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
 <!-- EDIT: bump the ?v= number whenever you change style.css or main.js, so browsers load the new file -->
-<link rel="stylesheet" href="style.css?v=20261114">
+<link rel="stylesheet" href="style.css?v=20261114b">
 
 <!-- Lets search engines connect this page to your Scholar, LinkedIn and GitHub profiles. -->
 <script type="application/ld+json">
@@ -427,12 +427,11 @@
         </div>
         <div class="row-body">
           <p>The lab studies epidural spinal cord stimulation for people with spinal cord injury. I designed the high-density EMG system that maps stimulation patterns to leg-muscle activation: flexible 128-contact electrode sleeves for the thigh and calf, laid out in KiCad, each read by a 36 &times; 26 mm headstage built around two bare-die Intan RHD2164 chips, for 512 channels across both legs. The main layout trade-off was spatial sampling against electrode impedance and motion artifacts. I took the arrays through DFM review with the fab house until they were released for fabrication in October 2026. I also built the normalized SQLite database and analysis pipeline for the 12-month trial, which tunes stimulation with Gaussian-process Bayesian optimization on each patient's preferences, so the clinical team can compare patients and cluster subgroups.</p>
-          <div class="gallery gallery-3 gallery-dark">
-            <a href="assets/img/hhri-system.jpg"><img src="assets/img/hhri-system.jpg" width="1400" height="824" loading="lazy" decoding="async" alt="Diagram of the HD-EMG system: a 128-contact thigh sleeve and a 128-contact calf sleeve on one leg, each with its own headstage, and the signal chain from skin to contacts, flexible sleeve, connector, headstage, cable, acquisition board, and computer."></a>
-            <a href="assets/img/hhri-thigh-array.jpg"><img src="assets/img/hhri-thigh-array.jpg" width="1400" height="887" loading="lazy" decoding="async" alt="KiCad layout of the thigh electrode array: a trapezoid of 128 round gold contacts with traces routed down to a narrow tail connector."></a>
-            <a href="assets/img/hhri-headstage.jpg"><img src="assets/img/hhri-headstage.jpg" width="1400" height="980" loading="lazy" decoding="async" alt="Layout of the 36 by 26 millimeter headstage with two bare-die Intan RHD2164 chips, a multiplexer, connectors, and 128 channel connections fanning out to the array connector."></a>
+          <div class="renders">
+            <a href="assets/img/hhri-arrays-render.jpg"><img src="assets/img/hhri-arrays-render.jpg" width="2000" height="822" loading="lazy" decoding="async" alt="Render of the two flexible electrode arrays on amber polyimide: a wide trapezoid for the thigh and a smaller one for the calf, each with 128 round gold contacts, routed traces, and a narrow tail that ends in a board-to-board connector. A 100 mm scale bar sits in the corner."></a>
+            <a href="assets/img/hhri-headstage-render.jpg"><img src="assets/img/hhri-headstage-render.jpg" width="2000" height="997" loading="lazy" decoding="async" alt="Render of the 36 by 26 mm headstage: two bare silicon amplifier dies with gold wire bonds, a TSSOP chip between them, two small Omnetics connectors at the top, test points and tiny passives, and a long Samtec connector along the bottom edge. A magnifier shows the edge of one die, where gold wires run from the die pads to two staggered rows of bond fingers."></a>
           </div>
-          <p class="gallery-caption">My designs, from left: how the sleeves, headstages, and acquisition board connect; the thigh array routed in KiCad; the headstage layout with its two bare-die amplifier chips. Click any image for full size.</p>
+          <p class="gallery-caption">Renders of my KiCad layouts. Top: the thigh and calf arrays, 128 contacts each. Bottom: the headstage, with a close-up of the staggered bond fingers I laid out for wire bonding the bare dies. Also: <a href="assets/img/hhri-system.jpg">how the parts connect</a>.</p>
           <p class="tags"><span>HD-EMG</span><span>KiCad</span><span>Flex PCB</span><span>Intan RHD2164</span><span>SQLite</span><span>Python</span><span>Bayesian optimization</span></p>
         </div>
       </article>
@@ -470,6 +469,25 @@
     <!-- ---------- coursework ---------- -->
     <h3 class="h-sub h-sub-gap">Coursework</h3>
     <div class="rows">
+
+      <article class="row">
+        <div class="row-title">
+          <h4>Selective classification for medical images</h4>
+          <p class="row-meta">Deep Learning (CSCI 5527) &middot; Spring 2026 &middot; team project</p>
+        </div>
+        <div class="row-body">
+          <p>A classifier for medical images should be able to say &ldquo;not sure&rdquo; and pass the case to a clinician. I built our experiment pipeline, which scores every prediction with ten confidence measures plus MC Dropout and tracks how the error rate falls as the model abstains on more cases. We ran it on PathMNIST, ISIC 2019 skin lesions, and CheXpert chest X-rays, and stress-tested it with corrupted inputs (noise, blur, brightness, contrast) and with classes held out of training. The best confidence measure was different on each dataset. Weighting each error by its clinical severity raised the risk 2.5 times on ISIC (AURC 0.093 to 0.235) and 3.6 times on CheXpert, so plain error rates understate what the mistakes cost. I also fixed an MC Dropout bug that left batch norm in training mode, which had pulled MC Dropout accuracy on ISIC down to 33% (76% after the fix).</p>
+          <figure class="plot">
+            <a href="assets/img/sc-tsne.jpg"><img src="assets/img/sc-tsne.jpg" width="1600" height="408" loading="lazy" decoding="async" alt="Three t-SNE scatter plots of 2,000 ISIC 2019 test images. Left, colored by lesion class, the classes form overlapping clusters. Middle, colored by the model's confidence, low-confidence points are more common where classes overlap. Right, colored by correctness, errors are more common in those same regions."></a>
+            <figcaption>2,000 ISIC 2019 test images, embedded with t-SNE from the network's penultimate layer and colored by class, by the model's confidence, and by whether the prediction was right.</figcaption>
+          </figure>
+          <figure class="plot">
+            <a href="assets/img/sc-weighted-risk.png"><img src="assets/img/sc-weighted-risk.png" width="1400" height="460" loading="lazy" decoding="async" alt="Two coverage-risk plots for four confidence measures on ISIC 2019. On the left, the plain error rate rises from near 0 to about 0.25 as coverage goes to 100 percent. On the right, the same curves weighted by clinical severity rise to about 0.6. Energy is the worst measure in both."></a>
+            <figcaption>Risk as the model keeps more of the ISIC 2019 test set (coverage), unweighted and weighted by clinical severity.</figcaption>
+          </figure>
+          <p class="tags"><span>PyTorch</span><span>ResNet-18</span><span>MC Dropout</span><span>Calibration</span><span>Distribution shift</span></p>
+        </div>
+      </article>
 
       <article class="row">
         <div class="row-title">
@@ -549,6 +567,8 @@
         </div>
         <div class="row-body">
           <p>When one object is seen through another, like a dog behind a picket fence, SAM tends to cut the background object into pieces along the occluder. We collected 146 images with fences, windows, reflections, and repeating patterns to see where SAM breaks, then tried two fixes. The first merges SAM's masks using Depth Anything: masks whose average depths differ by less than a small threshold become one object. On a photo of a woman holding a glass of water, that cut the segment count from 31 to 17 and joined the water into a single segment. The second used classical template matching, local binary patterns combined with Fourier similarity, to find the occluder's repeating pattern.</p>
+          <details class="more">
+          <summary>How the depth merging works</summary>
           <figure class="diagram">
             <svg viewBox="0 0 760 210" role="img" aria-labelledby="segdiag-t segdiag-d">
               <title id="segdiag-t">Depth-based merging of SAM masks</title>
@@ -578,8 +598,9 @@
                 <text x="372" y="186" class="dg-label" fill="#8a8f98" font-size="12">depth map</text>
               </g>
             </svg>
-            <figcaption>The depth-based merging step.</figcaption>
+            <figcaption>Masks whose average depths are close get merged into one segment.</figcaption>
           </figure>
+          </details>
           <p class="tags"><span>Segment Anything</span><span>Depth Anything</span><span>Monocular depth</span><span>Template matching</span></p>
         </div>
       </article>
@@ -587,11 +608,6 @@
     </div>
 
     <ul class="minis">
-      <li>
-        <h4>Selective classification for medical images</h4>
-        <p class="row-meta">Deep Learning (CSCI 5527) &middot; team project</p>
-        <p>Built the experiment pipeline for MC Dropout selective classification on PathMNIST, ISIC 2019, and CheXpert, and tracked down a bug in how MC Dropout interacted with batch normalization.</p>
-      </li>
       <li>
         <h4>Sensors and IoT</h4>
         <p class="row-meta">Sensors and Internet of Things &middot; Fall 2022</p>
@@ -806,6 +822,6 @@
 </footer>
 
 <p class="sr-only" id="liveStatus" role="status" aria-live="polite"></p>
-<script src="main.js?v=20261114"></script>
+<script src="main.js?v=20261114b"></script>
 </body>
 </html>

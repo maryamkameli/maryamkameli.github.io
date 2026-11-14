@@ -574,6 +574,36 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .dg-line { fill: none; stroke: var(--ink-2); stroke-width: 1.5; }
 .diagram figcaption { margin-top: 8px; font-size: .8rem; color: var(--muted); }
 
+/* expandable detail (segmentation diagram) */
+.more { margin-top: 14px; max-width: 680px; }
+.more summary {
+  display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+  font-size: .88rem; font-weight: 500; color: var(--accent); list-style: none;
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::before {
+  content: ""; width: 6px; height: 6px; margin-top: -2px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg); transition: transform .2s ease;
+}
+.more[open] summary::before { transform: rotate(45deg); margin-top: -5px; }
+.more .diagram { margin-top: 10px; }
+
+/* renders of the HD-EMG boards */
+.renders { display: grid; gap: 10px; margin-top: 14px; max-width: 760px; }
+.renders a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid #1f2430; background: #10141c; }
+.renders img { width: 100%; height: auto; display: block; }
+
+/* result plots (selective classification) */
+.plot { margin: 14px 0 0; max-width: 760px; }
+.plot a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.plot img { width: 100%; height: auto; display: block; }
+.plot figcaption { margin-top: 8px; font-size: .8rem; line-height: 1.5; color: var(--muted); }
+:root[data-theme="dark"] .plot img { filter: brightness(.92); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .plot img { filter: brightness(.92); }
+}
+
 /* small coursework cards */
 .minis {
   list-style: none; margin: 18px 0 0; padding: 0;

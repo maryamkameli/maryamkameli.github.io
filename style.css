@@ -601,9 +601,10 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
 /* result plots (selective classification) */
 .plot { margin: 14px 0 0; max-width: 760px; }
-.plot a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
-.plot img { width: 100%; height: auto; display: block; }
+.plot > a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.plot > a img { width: 100%; height: auto; display: block; }
 .plot figcaption { margin-top: 8px; font-size: .8rem; line-height: 1.5; color: var(--muted); }
+.plot-narrow { max-width: 600px; }
 :root[data-theme="dark"] .plot img { filter: brightness(.92); }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .plot img { filter: brightness(.92); }

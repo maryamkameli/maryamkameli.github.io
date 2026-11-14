@@ -39,7 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
 <!-- EDIT: bump the ?v= number whenever you change style.css or main.js, so browsers load the new file -->
-<link rel="stylesheet" href="style.css?v=20261114c">
+<link rel="stylesheet" href="style.css?v=20261114d">
 
 <!-- Lets search engines connect this page to your Scholar, LinkedIn and GitHub profiles. -->
 <script type="application/ld+json">
@@ -567,40 +567,14 @@
         </div>
         <div class="row-body">
           <p>When one object is seen through another, like a dog behind a picket fence, SAM tends to cut the background object into pieces along the occluder. We collected 146 images with fences, windows, reflections, and repeating patterns to see where SAM breaks, then tried two fixes. The first merges SAM's masks using Depth Anything: masks whose average depths differ by less than a small threshold become one object. On a photo of a woman holding a glass of water, that cut the segment count from 31 to 17 and joined the water into a single segment. The second used classical template matching, local binary patterns combined with Fourier similarity, to find the occluder's repeating pattern.</p>
-          <details class="more">
-          <summary>How the depth merging works</summary>
-          <figure class="diagram">
-            <svg viewBox="0 0 760 210" role="img" aria-labelledby="segdiag-t segdiag-d">
-              <title id="segdiag-t">Depth-based merging of SAM masks</title>
-              <desc id="segdiag-d">The input image goes to SAM, which returns many masks, and to Depth Anything, which returns a depth map. The average depth of each mask is computed, and masks whose average depths differ by less than a threshold are merged into one object.</desc>
-              <defs>
-                <marker id="dg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7079" style="fill: var(--ink-2)"/></marker>
-              </defs>
-              <g class="dg" font-family="Inter, system-ui, sans-serif">
-                <rect x="10" y="80" width="112" height="50" rx="8" class="dg-box" fill="#ffffff" stroke="#d8d3ca" stroke-width="1.5"/>
-                <text x="66" y="110" text-anchor="middle" fill="#16181d" font-size="13">Input image</text>
-                <rect x="182" y="20" width="150" height="50" rx="8" class="dg-box dg-a" fill="#ecebfa" stroke="#a9a4e6" stroke-width="1.5"/>
-                <text x="257" y="50" text-anchor="middle" fill="#16181d" font-size="13">SAM</text>
-                <rect x="182" y="140" width="150" height="50" rx="8" class="dg-box dg-b" fill="#e3f4f0" stroke="#8fcfc2" stroke-width="1.5"/>
-                <text x="257" y="170" text-anchor="middle" fill="#16181d" font-size="13">Depth Anything</text>
-                <rect x="442" y="80" width="140" height="50" rx="8" class="dg-box" fill="#ffffff" stroke="#d8d3ca" stroke-width="1.5"/>
-                <text x="512" y="101" text-anchor="middle" fill="#16181d" font-size="13">average depth</text>
-                <text x="512" y="118" text-anchor="middle" fill="#16181d" font-size="13">of each mask</text>
-                <rect x="618" y="80" width="134" height="50" rx="8" class="dg-box dg-c" fill="#fdf0e1" stroke="#efc08b" stroke-width="1.5"/>
-                <text x="685" y="101" text-anchor="middle" fill="#16181d" font-size="13">merge if the depth</text>
-                <text x="685" y="118" text-anchor="middle" fill="#16181d" font-size="13">gap &lt; threshold</text>
-                <path d="M122 105 C152 105 152 45 180 45" class="dg-line" fill="none" stroke="#6b7079" stroke-width="1.5" marker-end="url(#dg-arrow)"/>
-                <path d="M122 105 C152 105 152 165 180 165" class="dg-line" fill="none" stroke="#6b7079" stroke-width="1.5" marker-end="url(#dg-arrow)"/>
-                <path d="M332 45 C392 45 402 99 440 99" class="dg-line" fill="none" stroke="#6b7079" stroke-width="1.5" marker-end="url(#dg-arrow)"/>
-                <path d="M332 165 C392 165 402 111 440 111" class="dg-line" fill="none" stroke="#6b7079" stroke-width="1.5" marker-end="url(#dg-arrow)"/>
-                <path d="M582 105 L616 105" class="dg-line" fill="none" stroke="#6b7079" stroke-width="1.5" marker-end="url(#dg-arrow)"/>
-                <text x="372" y="36" class="dg-label" fill="#8a8f98" font-size="12">masks 1 &hellip; n</text>
-                <text x="372" y="186" class="dg-label" fill="#8a8f98" font-size="12">depth map</text>
-              </g>
-            </svg>
-            <figcaption>Masks whose average depths are close get merged into one segment.</figcaption>
+          <figure class="plot">
+            <a href="assets/img/sam-results.jpg"><img src="assets/img/sam-results.jpg" width="1558" height="592" loading="lazy" decoding="async" alt="Two rows of four panels each: the photo, its Depth Anything depth map, SAM's segmentation, and the segmentation after merging by average depth. Top row, a woman holding a glass of water: SAM gives 31 segments and cuts the water into several pieces; after merging there are 17 and the water is one segment. Bottom row, a living room with a brick wall: SAM gives 120 segments, many of them single bricks; after merging there are 24 and the wall is one segment."></a>
+            <figcaption>Two results from our report. Top: SAM cuts the glass of water into several pieces; after merging by average depth the water is one segment and the count drops from 31 to 17. Bottom: SAM breaks the brick wall into many small pieces; after merging the wall is one segment and the count drops from 120 to 24. Photos: <a href="https://ocdn.eu/pulscms-transforms/1/J_KktkqTURBXy81NzMzOTg0OTRkM2Y0ODlkMDYyMWVlN2U1YzNjODdmMy5qcGVnkZUCzQLoAMLD">woman with a glass</a>, <a href="https://149359637.v2.pressablecdn.com/wp-content/uploads/2017/08/Old-Brick-Wall-Mural-in-a-Living-Room-324x243.jpg">living room</a>, as cited in our report.</figcaption>
           </figure>
-          </details>
+          <figure class="plot plot-narrow">
+            <a href="assets/img/sam-flow.png"><img src="assets/img/sam-flow.png" width="1015" height="350" loading="lazy" decoding="async" alt="Flowchart from the report: the input image goes to SAM, which outputs masks 1 to n, and to Depth Anything, which outputs a pixel depth map. The depths of two masks are compared; if the segments belong to the same object the masks are combined, otherwise the process continues."></a>
+            <figcaption>Our pipeline, from the report: SAM proposes masks, Depth Anything estimates depth, and masks whose average depths are close enough get combined.</figcaption>
+          </figure>
           <p class="tags"><span>Segment Anything</span><span>Depth Anything</span><span>Monocular depth</span><span>Template matching</span></p>
         </div>
       </article>
@@ -832,6 +806,6 @@
 </footer>
 
 <p class="sr-only" id="liveStatus" role="status" aria-live="polite"></p>
-<script src="main.js?v=20261114c"></script>
+<script src="main.js?v=20261114d"></script>
 </body>
 </html>

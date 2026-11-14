@@ -133,7 +133,7 @@
       <div class="prose" id="about">
         <p class="lead">I study how rendering choices in VR change what people perceive: whether they keep track of where they are, whether they get sick, and whether an avatar feels like a person in the room with them.</p>
 
-        <p>In my TVCG paper, the scene turns into a black-and-white line drawing while you travel through it and fills back in with color when you stop. In a study with 36 people, that left them with a better sense of the space than teleporting and less sickness than full-color motion. Now I'm building avatars of myself at several levels of realism, from a 3D Gaussian Splatting capture to a MetaHuman to a cartoon, for a study on whether photorealism changes co-presence and trust.</p>
+        <p>In my TVCG paper, the scene turns into a black-and-white line drawing while you travel through it and fills back in with color when you stop. In a study with 36 people, pointing accuracy matched full-color motion and beat teleporting, and cybersickness was lower than with full-color motion. Now I'm building avatars of myself at several levels of realism, from a 3D Gaussian Splatting capture to a MetaHuman to a cartoon, for a study on whether photorealism changes co-presence and trust.</p>
 
         <p>My bachelor's degree is in electrical engineering, and I still like building whole systems, hardware included. I added a LiDAR and a Jetson Nano to a Pepper robot that went into nine Minnesota nursing homes, and in summer 2026 I designed an HD-EMG recording setup and the trial database for a spinal cord stimulation study at the Hennepin Healthcare Research Institute.</p>
 
@@ -187,7 +187,7 @@
         <div class="feature-text">
           <p>Moving through a large VR space usually means gliding or teleporting. Gliding keeps you oriented but makes a lot of people sick. Teleporting is comfortable, but after a few jumps it gets hard to say where you are.</p>
           <p>I wanted something in between. While the view moves, the scene becomes a line drawing: surface textures drop out and only the edges that describe the room are left. When you arrive, the color comes back. The idea came from architecture, where designers walk clients through sketch-style VR models so they can understand a space without feeling sick.</p>
-          <p>In the study, 36 participants took a guided tour of a virtual museum with each of the three methods. Full-color gliding gave the best spatial judgments and the most cybersickness. Teleporting caused the least sickness and the weakest spatial judgments. The sketch transition landed between the two on both counts.</p>
+          <p>In a three-session within-subjects study, 36 participants took a guided tour of a virtual museum with each method. Pointing accuracy with the sketch transition was significantly better than with teleporting and statistically equivalent to full-color travel, and post-exposure cybersickness was significantly lower than with full-color travel.</p>
         </div>
         <dl class="facts">
           <div><dt>Compared</dt><dd>Full-color travel, the sketch transition, and teleporting</dd></div>
@@ -238,7 +238,7 @@
         <div class="feature-text">
           <p>Much of what VR research says about avatar realism was measured with avatars that never looked real, and stylized avatars often did as well as realistic ones. Gaussian splatting can now produce avatars that look close to video, so it is worth asking again.</p>
           <p>I built three avatars of myself. The captured one is a GaussianAvatars model trained on a 25-camera capture in an ordinary room instead of a studio. The 3DGS rasterizer assumes a centered principal point, so a plain crop around my head rendered nothing. Instead I re-aim each camera at the tracked head with a rotation-only homography and fold lens undistortion into the same resampling step, which made the training images 44% sharper. The crafted avatar is a MetaHuman built from an iPhone scan, and the stylized one comes from Meta's avatar tool.</p>
-          <p>The planned study puts 36 participants in VR with each avatar and asks about co-presence, trust, eeriness, realism, and how much the avatar resembles the real person. It also tests whether PSNR, SSIM, or LPIPS predict any of those answers. Longer term, I'm working toward a pipeline that pairs 3D Gaussian Splatting with diffusion models, so one identity can be rendered at any level of realism instead of three fixed points.</p>
+          <p>The planned study puts 36 participants in VR with each avatar and asks about co-presence, trust, eeriness, realism, and how much the avatar resembles the real person. Realistic is not the same as recognizable, so a key question is whether identity fidelity matters more than visual realism when the avatar is someone you know. It also tests whether PSNR, SSIM, or LPIPS predict any of those answers. Longer term, I'm working toward a pipeline that pairs 3D Gaussian Splatting with diffusion models, so one identity can be rendered at any level of realism instead of three fixed points.</p>
         </div>
         <dl class="facts">
           <div><dt>Status</dt><dd>Avatars built; the study has not run yet, so there are no results</dd></div>
@@ -425,8 +425,14 @@
           <p class="row-meta">Jun &ndash; Aug 2026 &middot; Principal Research Assistant, NeuroRemap Lab (PI: Prof. Tay Netoff), Hennepin Healthcare Research Institute</p>
         </div>
         <div class="row-body">
-          <p>The lab studies epidural spinal cord stimulation for people with spinal cord injury. I designed a high-density EMG system to map stimulation patterns to leg-muscle activation. That included laying out flexible electrode-array PCBs in KiCad, where the main trade-off was spatial sampling against electrode impedance and motion artifacts. I also built the normalized SQLite database and analysis pipeline for the 12-month trial, which tunes stimulation with Gaussian-process Bayesian optimization on each patient's preferences, so the clinical team can compare patients and cluster subgroups.</p>
-          <p class="tags"><span>HD-EMG</span><span>KiCad</span><span>PCB layout</span><span>SQLite</span><span>Python</span><span>Bayesian optimization</span></p>
+          <p>The lab studies epidural spinal cord stimulation for people with spinal cord injury. I designed the high-density EMG system that maps stimulation patterns to leg-muscle activation: flexible 128-contact electrode sleeves for the thigh and calf, laid out in KiCad, each read by a 36 &times; 26 mm headstage built around two bare-die Intan RHD2164 chips, for 512 channels across both legs. The main layout trade-off was spatial sampling against electrode impedance and motion artifacts. I took the arrays through DFM review with the fab house until they were released for fabrication in October 2026. I also built the normalized SQLite database and analysis pipeline for the 12-month trial, which tunes stimulation with Gaussian-process Bayesian optimization on each patient's preferences, so the clinical team can compare patients and cluster subgroups.</p>
+          <div class="gallery gallery-3 gallery-dark">
+            <a href="assets/img/hhri-system.jpg"><img src="assets/img/hhri-system.jpg" width="1400" height="824" loading="lazy" decoding="async" alt="Diagram of the HD-EMG system: a 128-contact thigh sleeve and a 128-contact calf sleeve on one leg, each with its own headstage, and the signal chain from skin to contacts, flexible sleeve, connector, headstage, cable, acquisition board, and computer."></a>
+            <a href="assets/img/hhri-thigh-array.jpg"><img src="assets/img/hhri-thigh-array.jpg" width="1400" height="887" loading="lazy" decoding="async" alt="KiCad layout of the thigh electrode array: a trapezoid of 128 round gold contacts with traces routed down to a narrow tail connector."></a>
+            <a href="assets/img/hhri-headstage.jpg"><img src="assets/img/hhri-headstage.jpg" width="1400" height="980" loading="lazy" decoding="async" alt="Layout of the 36 by 26 millimeter headstage with two bare-die Intan RHD2164 chips, a multiplexer, connectors, and 128 channel connections fanning out to the array connector."></a>
+          </div>
+          <p class="gallery-caption">My designs, from left: how the sleeves, headstages, and acquisition board connect; the thigh array routed in KiCad; the headstage layout with its two bare-die amplifier chips. Click any image for full size.</p>
+          <p class="tags"><span>HD-EMG</span><span>KiCad</span><span>Flex PCB</span><span>Intan RHD2164</span><span>SQLite</span><span>Python</span><span>Bayesian optimization</span></p>
         </div>
       </article>
 
@@ -442,7 +448,7 @@
                  alt="A two-dimensional occupancy grid map of a single-floor care facility, with corridors, rooms, doorways, and furniture outlines traced by the robot's LiDAR.">
             <figcaption>Occupancy map of a care facility, built from the robot's LiDAR during autonomous exploration.</figcaption>
           </figure>
-          <p class="row-links"><a href="#pub-robots">Paper (CSCI 2022)</a> &middot; <a href="https://github.com/maryamkameli/Autonomous-Navigation">Code</a></p>
+          <p class="row-links"><a href="#pub-robots">Paper (CSCI 2022)</a> &middot; <a href="https://github.com/maryamkameli/Autonomous-Navigation">Code</a> &middot; Press coverage of the deployment: <a href="https://www.mprnews.org/story/2022/07/07/nursing-home-robots-dance-sing-and-watch-for-signs-of-trouble">MPR News</a>, <a href="https://www.cbsnews.com/news/robot-dementia-nursing-home-minnesota">CBS News</a></p>
           <p class="tags"><span>ROS</span><span>LiDAR</span><span>SLAM</span><span>Jetson Nano</span><span>Web app</span></p>
         </div>
       </article>
@@ -466,6 +472,37 @@
 
       <article class="row">
         <div class="row-title">
+          <h4>Markerless motion capture</h4>
+          <p class="row-meta">Computer Graphics (CSCI 5607) &middot; Fall 2025 &middot; with Aaron Glick</p>
+        </div>
+        <div class="row-body">
+          <p>A semi-automatic pipeline from video to animation. ViTPose gives a 17-keypoint pose for every frame, and our OpenGL viewer draws it as a color-coded skeleton. Pose estimates jitter from frame to frame, so we compared Butterworth and Savitzky-Golay filtering with spline interpolation and approximation. For 3D, SAM 3D Body recovers a body mesh from single images, and we mapped top-view keypoints of a crawling baby onto a rigged 3D model in Unity to animate it.</p>
+          <div class="media-pair">
+          <figure class="clip row-clip">
+            <div class="clip-media" style="aspect-ratio: 960 / 508">
+              <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/mocap-smoothing-poster.jpg" aria-label="Six stick-figure skeletons of the same dancer moving in sync, each smoothed differently">
+                <source src="assets/video/mocap-smoothing.mp4" type="video/mp4">
+              </video>
+              <button class="vid-toggle" type="button" aria-label="Pause video">
+                <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+              </button>
+            </div>
+            <figcaption>One dancer's pose track run through six smoothing variants in our OpenGL viewer.</figcaption>
+          </figure>
+          <figure class="clip row-clip">
+            <div class="clip-media" style="aspect-ratio: 559 / 432; background:#6b6460">
+              <img src="assets/img/mocap-rig.jpg" width="559" height="432" loading="lazy" decoding="async" alt="A rigged 3D baby model on all fours, with its skeleton and joint targets visible, posed from pose-tracking data.">
+            </div>
+            <figcaption>The rigged baby model driven by pose data in Unity.</figcaption>
+          </figure>
+          </div>
+          <p class="tags"><span>ViTPose</span><span>SAM 3D Body</span><span>OpenGL</span><span>C++</span><span>Unity</span><span>Blender</span></p>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="row-title">
           <h4>Ray tracer in C++</h4>
           <p class="row-meta">Computer Graphics &middot; Fall 2025</p>
         </div>
@@ -481,19 +518,74 @@
         </div>
       </article>
 
+      <article class="row">
+        <div class="row-title">
+          <h4>3D maze game in OpenGL</h4>
+          <p class="row-meta">Computer Graphics &middot; Fall 2025</p>
+        </div>
+        <div class="row-body">
+          <p>A first-person maze in C++ with OpenGL and SDL2. Walls are textured from BMP files, you collect keys to open doors, and collisions are checked at four points around the player instead of a single point, so you can't clip through corners. Maps load from text files.</p>
+          <figure class="clip row-clip">
+            <div class="clip-media" style="aspect-ratio: 4 / 3">
+              <video muted loop playsinline preload="metadata" data-autoplay poster="assets/video/maze-poster.jpg" aria-label="First-person walk through textured maze corridors, carrying a red key past a red door and toward a green door">
+                <source src="assets/video/maze.mp4" type="video/mp4">
+              </video>
+              <button class="vid-toggle" type="button" aria-label="Pause video">
+                <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+              </button>
+            </div>
+            <figcaption>Gameplay, sped up 2&times;.</figcaption>
+          </figure>
+          <p class="row-links"><a href="https://github.com/maryamkameli/MazeGame">Code</a></p>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="row-title">
+          <h4>Segmenting objects behind fences and glass</h4>
+          <p class="row-meta">Course project &middot; Spring 2024 &middot; with David Widhalm, Nicole Vu, and Vahara Narhimsa Swamy Menga</p>
+        </div>
+        <div class="row-body">
+          <p>When one object is seen through another, like a dog behind a picket fence, SAM tends to cut the background object into pieces along the occluder. We collected 146 images with fences, windows, reflections, and repeating patterns to see where SAM breaks, then tried two fixes. The first merges SAM's masks using Depth Anything: masks whose average depths differ by less than a small threshold become one object. On a photo of a woman holding a glass of water, that cut the segment count from 31 to 17 and joined the water into a single segment. The second used classical template matching, local binary patterns combined with Fourier similarity, to find the occluder's repeating pattern.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 760 210" role="img" aria-labelledby="segdiag-t segdiag-d">
+              <title id="segdiag-t">Depth-based merging of SAM masks</title>
+              <desc id="segdiag-d">The input image goes to SAM, which returns many masks, and to Depth Anything, which returns a depth map. The average depth of each mask is computed, and masks whose average depths differ by less than a threshold are merged into one object.</desc>
+              <defs>
+                <marker id="dg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--ink-2)"/></marker>
+              </defs>
+              <g class="dg">
+                <rect x="10" y="80" width="112" height="50" rx="8" class="dg-box"/>
+                <text x="66" y="110" text-anchor="middle">Input image</text>
+                <rect x="182" y="20" width="150" height="50" rx="8" class="dg-box dg-a"/>
+                <text x="257" y="50" text-anchor="middle">SAM</text>
+                <rect x="182" y="140" width="150" height="50" rx="8" class="dg-box dg-b"/>
+                <text x="257" y="170" text-anchor="middle">Depth Anything</text>
+                <rect x="442" y="80" width="140" height="50" rx="8" class="dg-box"/>
+                <text x="512" y="101" text-anchor="middle">average depth</text>
+                <text x="512" y="118" text-anchor="middle">of each mask</text>
+                <rect x="618" y="80" width="134" height="50" rx="8" class="dg-box dg-c"/>
+                <text x="685" y="101" text-anchor="middle">merge if the depth</text>
+                <text x="685" y="118" text-anchor="middle">gap &lt; threshold</text>
+                <path d="M122 105 C152 105 152 45 180 45" class="dg-line" marker-end="url(#dg-arrow)"/>
+                <path d="M122 105 C152 105 152 165 180 165" class="dg-line" marker-end="url(#dg-arrow)"/>
+                <path d="M332 45 C392 45 402 99 440 99" class="dg-line" marker-end="url(#dg-arrow)"/>
+                <path d="M332 165 C392 165 402 111 440 111" class="dg-line" marker-end="url(#dg-arrow)"/>
+                <path d="M582 105 L616 105" class="dg-line" marker-end="url(#dg-arrow)"/>
+                <text x="372" y="36" class="dg-label">masks 1 &hellip; n</text>
+                <text x="372" y="186" class="dg-label">depth map</text>
+              </g>
+            </svg>
+            <figcaption>The depth-based merging step.</figcaption>
+          </figure>
+          <p class="tags"><span>Segment Anything</span><span>Depth Anything</span><span>Monocular depth</span><span>Template matching</span></p>
+        </div>
+      </article>
+
     </div>
 
     <ul class="minis">
-      <li>
-        <h4>Markerless motion capture</h4>
-        <p class="row-meta">Computer Graphics &middot; Fall 2025</p>
-        <p>Video in, animated 3D body out: ViTPose keypoints, SAM for a 3D body mesh in each frame, Savitzky-Golay filtering and spline interpolation to remove jitter, and OpenGL for rendering.</p>
-      </li>
-      <li>
-        <h4>3D reconstruction and segmentation from video</h4>
-        <p class="row-meta">Robot Vision &middot; Fall 2023</p>
-        <p>Reconstructed objects in 3D from video and paired SAM with monocular depth to segment through occlusion and transparent surfaces.</p>
-      </li>
       <li>
         <h4>Selective classification for medical images</h4>
         <p class="row-meta">Deep Learning (CSCI 5527) &middot; team project</p>
